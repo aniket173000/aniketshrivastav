@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Aniket Shrivastav — Software Engineer & AI Engineer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#07070f;--bg2:#0f0f1a;--bg3:#16162a;
+  --accent:#7c6ff7;--accent2:#5eddb8;--accent3:#f7c06f;
+  --text:#f0f0f8;--muted:#7a7a9a;--border:#1e1e32;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(7,7,15,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;padding:0 5%;}
+.nav-logo{font-size:1.05rem;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.4px;transition:color .2s;}
+.nav-links a:hover{color:var(--accent2);}
+.nav-cta{background:var(--accent);color:#fff;padding:.42rem 1.2rem;border-radius:7px;font-size:.82rem;font-weight:700;text-decoration:none;transition:opacity .2s,transform .2s;}
+.nav-cta:hover{opacity:.88;transform:translateY(-1px);}
+
+/* PAGE ROUTER */
+.page{display:none;}
+.page.active{display:block;}
+
+/* HERO */
+#hero-section{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;top:-200px;left:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(124,111,247,.12) 0%,transparent 70%);pointer-events:none;}
+.hero-glow2{position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(94,221,184,.08) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:1140px;margin:0 auto;width:100%;position:relative;}
+.hero-badges{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+.hbadge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .9rem;border-radius:20px;font-size:.75rem;font-weight:600;letter-spacing:.5px;}
+.hbadge.purple{background:rgba(124,111,247,.15);border:1px solid rgba(124,111,247,.3);color:var(--accent);}
+.hbadge.green{background:rgba(94,221,184,.12);border:1px solid rgba(94,221,184,.25);color:var(--accent2);}
+.hbadge.amber{background:rgba(247,192,111,.12);border:1px solid rgba(247,192,111,.25);color:var(--accent3);}
+.hero-name{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1.0;margin-bottom:.7rem;background:linear-gradient(140deg,#fff 20%,var(--accent) 70%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-role{font-size:clamp(1rem,2.5vw,1.35rem);color:var(--accent2);font-weight:600;margin-bottom:1.4rem;letter-spacing:.3px;}
+.hero-desc{font-size:.97rem;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:2.5rem;}
+.hero-desc span{color:var(--text);font-weight:500;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#5a52e0);color:#fff;padding:.82rem 2rem;border-radius:9px;font-weight:700;text-decoration:none;font-size:.92rem;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(124,111,247,.35);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(124,111,247,.5);}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:.82rem 2rem;border-radius:9px;font-weight:500;text-decoration:none;font-size:.92rem;transition:all .2s;background:rgba(255,255,255,.03);}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);background:rgba(124,111,247,.06);}
+.btn-freelance{border:1px solid rgba(94,221,184,.4);color:var(--accent2);padding:.82rem 2rem;border-radius:9px;font-weight:600;text-decoration:none;font-size:.92rem;transition:all .2s;background:rgba(94,221,184,.06);}
+.btn-freelance:hover{background:rgba(94,221,184,.14);transform:translateY(-2px);}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;max-width:600px;}
+.stat-box{background:var(--bg2);padding:1.2rem;text-align:center;}
+.stat-num{font-size:1.7rem;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-lbl{font-size:.7rem;color:var(--muted);letter-spacing:.5px;margin-top:.2rem;}
+
+/* SECTIONS SHARED */
+.wrap{max-width:1140px;margin:0 auto;padding:90px 5%;}
+.stag{display:inline-block;color:var(--accent);font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:.7rem;}
+.stitle{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:.9rem;line-height:1.15;}
+.ssub{color:var(--muted);font-size:.95rem;line-height:1.8;max-width:560px;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.about-p{color:var(--muted);line-height:1.85;margin-bottom:1rem;font-size:.93rem;}
+.about-p strong{color:var(--accent2);}
+.ai-highlight{background:linear-gradient(135deg,rgba(124,111,247,.1),rgba(94,221,184,.07));border:1px solid rgba(124,111,247,.2);border-radius:12px;padding:1.2rem 1.4rem;margin-top:1.5rem;}
+.ai-highlight-title{font-size:.78rem;font-weight:700;color:var(--accent);letter-spacing:1px;margin-bottom:.7rem;}
+.ai-tools{display:flex;flex-wrap:wrap;gap:.5rem;}
+.ai-tool{background:rgba(124,111,247,.15);border:1px solid rgba(124,111,247,.3);color:var(--accent);padding:.28rem .8rem;border-radius:6px;font-size:.75rem;font-weight:600;}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.acard{background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:1.2rem;transition:all .25s;cursor:default;}
+.acard:hover{border-color:var(--accent);transform:translateY(-3px);}
+.acard-icon{font-size:1.4rem;margin-bottom:.5rem;}
+.acard-t{font-size:.85rem;font-weight:700;margin-bottom:.25rem;}
+.acard-s{font-size:.75rem;color:var(--muted);line-height:1.5;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem;margin-top:3rem;}
+.scat{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.4rem;}
+.scat-title{font-size:.76rem;font-weight:700;letter-spacing:1.2px;margin-bottom:1rem;}
+.scat-title.purple{color:var(--accent);}
+.scat-title.green{color:var(--accent2);}
+.scat-title.amber{color:var(--accent3);}
+.scat-title.pink{color:#f77fb0;}
+.stags{display:flex;flex-wrap:wrap;gap:.45rem;}
+.stag-item{padding:.3rem .8rem;border-radius:20px;font-size:.74rem;font-weight:500;transition:all .2s;cursor:default;}
+.stag-item.purple{background:rgba(124,111,247,.12);border:1px solid rgba(124,111,247,.22);color:var(--accent);}
+.stag-item.green{background:rgba(94,221,184,.1);border:1px solid rgba(94,221,184,.2);color:var(--accent2);}
+.stag-item.amber{background:rgba(247,192,111,.1);border:1px solid rgba(247,192,111,.2);color:var(--accent3);}
+.stag-item.pink{background:rgba(247,127,176,.1);border:1px solid rgba(247,127,176,.2);color:#f77fb0;}
+.stag-item:hover{transform:scale(1.07);}
+
+/* AI SKILLS BANNER */
+.ai-banner{background:linear-gradient(135deg,rgba(124,111,247,.12),rgba(94,221,184,.08));border:1px solid rgba(124,111,247,.25);border-radius:16px;padding:2rem 2.5rem;margin-top:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.ai-banner-text{flex:1;min-width:200px;}
+.ai-banner-title{font-size:1.1rem;font-weight:800;margin-bottom:.4rem;}
+.ai-banner-sub{font-size:.85rem;color:var(--muted);line-height:1.6;}
+.ai-banner-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+
+/* EXPERIENCE */
+.timeline{position:relative;margin-top:3rem;}
+.timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent2),transparent);}
+.exp-item{position:relative;padding-left:56px;margin-bottom:2.5rem;}
+.exp-dot{position:absolute;left:10px;top:10px;width:18px;height:18px;border-radius:50%;border:3px solid var(--bg);}
+.exp-dot.p{background:var(--accent);box-shadow:0 0 0 3px rgba(124,111,247,.3);}
+.exp-dot.g{background:var(--accent2);box-shadow:0 0 0 3px rgba(94,221,184,.3);}
+.exp-dot.b{background:#378ADD;box-shadow:0 0 0 3px rgba(55,138,221,.3);}
+.ecard{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.7rem;transition:border-color .2s,transform .2s;cursor:pointer;}
+.ecard:hover{border-color:var(--accent);transform:translateX(5px);}
+.ecard-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem;}
+.ecard-role{font-size:1.05rem;font-weight:800;}
+.eperiod{font-size:.72rem;color:var(--accent2);background:rgba(94,221,184,.1);padding:.22rem .7rem;border-radius:20px;border:1px solid rgba(94,221,184,.2);}
+.ecompany{color:var(--accent);font-size:.88rem;font-weight:700;margin-bottom:.7rem;}
+.epoints{list-style:none;display:none;}
+.epoints.open{display:block;}
+.epoints li{color:var(--muted);font-size:.85rem;line-height:1.75;padding:.28rem 0 .28rem 1rem;position:relative;}
+.epoints li::before{content:'▸';position:absolute;left:0;color:var(--accent);}
+.estack{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem;}
+.etag{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:.18rem .6rem;border-radius:6px;font-size:.7rem;}
+.etoggle{font-size:.75rem;color:var(--accent);cursor:pointer;margin-top:.7rem;display:inline-flex;align-items:center;gap:.3rem;user-select:none;}
+
+/* ACHIEVEMENTS */
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:3rem;}
+.ach-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.4rem;display:flex;align-items:flex-start;gap:.9rem;transition:all .22s;}
+.ach-card:hover{border-color:var(--accent2);transform:translateY(-4px);}
+.ach-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;}
+.ach-t{font-size:.88rem;font-weight:700;margin-bottom:.25rem;}
+.ach-s{font-size:.76rem;color:var(--muted);line-height:1.5;}
+
+/* CONTACT */
+#contact-section{text-align:center;}
+.contact-links{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin:2.5rem 0;}
+.clink{display:flex;align-items:center;gap:.55rem;background:var(--bg2);border:1px solid var(--border);color:var(--text);text-decoration:none;padding:.82rem 1.6rem;border-radius:10px;font-size:.87rem;font-weight:500;transition:all .2s;}
+.clink:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);}
+.clink svg{width:17px;height:17px;}
+.hire-box{background:linear-gradient(135deg,rgba(124,111,247,.13),rgba(94,221,184,.08));border:1px solid rgba(124,111,247,.25);border-radius:18px;padding:3rem 2rem;max-width:620px;margin:0 auto;}
+.hire-t{font-size:1.5rem;font-weight:900;margin-bottom:.7rem;}
+.hire-s{color:var(--muted);font-size:.92rem;margin-bottom:2rem;line-height:1.75;}
+
+/* ===== FREELANCE PAGE ===== */
+#freelance-page .fl-hero{background:linear-gradient(135deg,rgba(94,221,184,.1),rgba(124,111,247,.08));border-bottom:1px solid var(--border);padding:100px 5% 60px;}
+#freelance-page .fl-hero-inner{max-width:1140px;margin:0 auto;}
+.fl-avail{display:inline-flex;align-items:center;gap:.5rem;background:rgba(94,221,184,.12);border:1px solid rgba(94,221,184,.25);color:var(--accent2);padding:.35rem 1rem;border-radius:20px;font-size:.75rem;font-weight:700;margin-bottom:1.5rem;}
+.fl-avail::before{content:'';width:7px;height:7px;background:var(--accent2);border-radius:50%;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.fl-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.1;margin-bottom:.8rem;}
+.fl-sub{color:var(--muted);font-size:1rem;line-height:1.8;max-width:600px;margin-bottom:2rem;}
+
+.fl-services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;}
+.fl-scard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:all .25s;}
+.fl-scard::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transition:transform .3s;transform-origin:left;}
+.fl-scard:hover::after{transform:scaleX(1);}
+.fl-scard:hover{border-color:rgba(124,111,247,.4);transform:translateY(-5px);}
+.fl-scard-icon{font-size:2rem;margin-bottom:1rem;}
+.fl-scard-t{font-size:1rem;font-weight:800;margin-bottom:.5rem;}
+.fl-scard-s{font-size:.84rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;}
+.fl-scard-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.fl-stag{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:.18rem .55rem;border-radius:5px;font-size:.7rem;}
+
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2.5rem;}
+.pstep{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;text-align:center;}
+.pstep-num{width:36px;height:36px;border-radius:50%;background:rgba(124,111,247,.15);border:1px solid rgba(124,111,247,.3);color:var(--accent);font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;}
+.pstep-t{font-size:.88rem;font-weight:700;margin-bottom:.3rem;}
+.pstep-s{font-size:.76rem;color:var(--muted);line-height:1.5;}
+
+.rates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem;margin-top:2.5rem;}
+.rcard{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.8rem;text-align:center;transition:all .22s;}
+.rcard:hover{border-color:var(--accent);transform:translateY(-3px);}
+.rcard.featured{border-color:rgba(124,111,247,.5);background:rgba(124,111,247,.07);}
+.rcard-label{font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;margin-bottom:.5rem;}
+.rcard-title{font-size:1.1rem;font-weight:800;margin-bottom:.4rem;}
+.rcard-sub{font-size:.8rem;color:var(--muted);line-height:1.6;}
+.rcard-cta{display:inline-block;margin-top:1.2rem;background:var(--accent);color:#fff;padding:.55rem 1.4rem;border-radius:7px;font-size:.8rem;font-weight:700;text-decoration:none;transition:opacity .2s;}
+.rcard-cta:hover{opacity:.85;}
+
+/* FADE UP */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;color:var(--muted);font-size:.78rem;}
+
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;}
+  .about-cards{grid-template-columns:1fr 1fr;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .nav-links{display:none;}
+  .hero-btns{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">AS/</span>
+    <ul class="nav-links">
+      <li><a href="#about" onclick="showMain()">About</a></li>
+      <li><a href="#skills" onclick="showMain()">Skills</a></li>
+      <li><a href="#experience" onclick="showMain()">Experience</a></li>
+      <li><a href="#achievements" onclick="showMain()">Achievements</a></li>
+      <li><a href="#" onclick="showFreelance();return false;" style="color:var(--accent2);font-weight:600;">Freelance</a></li>
+      <li><a href="#contact-section" onclick="showMain()">Contact</a></li>
+    </ul>
+    <a href="mailto:aniketshrivastav02@gmail.com" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<!-- ============ MAIN PAGE ============ -->
+<div id="main-page" class="page active">
+
+<!-- HERO -->
+<div id="hero-section">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-badges">
+      <span class="hbadge purple">⚡ Software Engineer 2</span>
+      <span class="hbadge green">🤖 Aspiring AI Engineer</span>
+      <span class="hbadge amber">🎯 Open to Opportunities</span>
+    </div>
+    <h1 class="hero-name">Aniket<br>Shrivastav</h1>
+    <p class="hero-role">Backend Systems · Distributed Architecture · AI-Powered Engineering</p>
+    <p class="hero-desc">I build <span>high-performance backend systems</span> that power fintech products — and I'm actively expanding into <span>AI engineering</span>, using LLMs, LangChain, and AI-first tools to solve real-world problems at scale.</p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-primary" onclick="showMain()">View My Work</a>
+      <a href="#" class="btn-freelance" onclick="showFreelance();return false;">🚀 Freelance With Me</a>
+      <a href="mailto:aniketshrivastav02@gmail.com" class="btn-secondary">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-box"><div class="stat-num">3+</div><div class="stat-lbl">Years Exp</div></div>
+      <div class="stat-box"><div class="stat-num">~60%</div><div class="stat-lbl">Ops Reduced</div></div>
+      <div class="stat-box"><div class="stat-num">1800+</div><div class="stat-lbl">CP Rating</div></div>
+      <div class="stat-box"><div class="stat-num">1000+</div><div class="stat-lbl">DSA Solved</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="wrap fade-up">
+  <span class="stag">Who I Am</span>
+  <h2 class="stitle">Engineer. Problem Solver.<br>AI Enthusiast.</h2>
+  <div class="about-grid">
+    <div>
+      <p class="about-p">I'm a Software Engineer with deep expertise in <strong>distributed systems, microservices, and fintech backend architecture</strong>. Currently at <strong>Aspire</strong>, building multi-currency payment infrastructure. Previously at <strong>WebEngage</strong> and <strong>Groww</strong>.</p>
+      <p class="about-p">I graduated from <strong>Indian Institute of Information Technology Nagpur</strong> in Computer Science, and am passionate about competitive programming — 4★ on CodeChef.</p>
+      <p class="about-p">Beyond backend, I'm deeply invested in the <strong>AI engineering space</strong> — building with LLMs, integrating AI into product workflows, and staying on the cutting edge of what's possible with tools like Claude, Cursor, and LangChain.</p>
+      <div class="ai-highlight">
+        <div class="ai-highlight-title">AI TOOLS I USE DAILY</div>
+        <div class="ai-tools">
+          <span class="ai-tool">Claude</span>
+          <span class="ai-tool">Cursor</span>
+          <span class="ai-tool">Antigravity</span>
+          <span class="ai-tool">GitHub Copilot</span>
+          <span class="ai-tool">ChatGPT</span>
+          <span class="ai-tool">Perplexity</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-cards">
+      <div class="acard">
+        <div class="acard-icon">⚡</div>
+        <div class="acard-t">Backend Systems</div>
+        <div class="acard-s">High-throughput APIs, payment flows, distributed services at scale.</div>
+      </div>
+      <div class="acard">
+        <div class="acard-icon">🤖</div>
+        <div class="acard-t">AI Engineering</div>
+        <div class="acard-s">LLM integration, LangChain pipelines, AI-augmented product development.</div>
+      </div>
+      <div class="acard">
+        <div class="acard-icon">🏗️</div>
+        <div class="acard-t">System Design</div>
+        <div class="acard-s">End-to-end HLD, data contracts, microservice architecture.</div>
+      </div>
+      <div class="acard">
+        <div class="acard-icon">🔁</div>
+        <div class="acard-t">Fintech & Payments</div>
+        <div class="acard-s">FX transfers, UPI, multi-currency flows, ledger accuracy.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="wrap fade-up" style="padding-top:0;">
+  <span class="stag">Tech Stack</span>
+  <h2 class="stitle">Tools I wield.</h2>
+
+  <div class="ai-banner">
+    <div class="ai-banner-text">
+      <div class="ai-banner-title">🤖 AI & Machine Learning Skills</div>
+      <div class="ai-banner-sub">Actively building AI-powered applications — from LLM orchestration to intelligent backend APIs. Exploring the intersection of robust software engineering and AI.</div>
+    </div>
+    <div class="ai-banner-tags">
+      <span class="stag-item green">LLM Integration</span>
+      <span class="stag-item green">LangChain</span>
+      <span class="stag-item green">Prompt Engineering</span>
+      <span class="stag-item green">RAG Pipelines</span>
+      <span class="stag-item green">OpenAI API</span>
+      <span class="stag-item green">Claude API</span>
+      <span class="stag-item green">Vector DBs</span>
+      <span class="stag-item green">AI Agents</span>
+    </div>
+  </div>
+
+  <div class="skills-grid" style="margin-top:1.5rem;">
+    <div class="scat">
+      <div class="scat-title purple">Languages</div>
+      <div class="stags">
+        <span class="stag-item purple">Golang</span><span class="stag-item purple">Java</span><span class="stag-item purple">C++</span><span class="stag-item purple">Python</span><span class="stag-item purple">PHP</span>
+      </div>
+    </div>
+    <div class="scat">
+      <div class="scat-title green">Backend Frameworks</div>
+      <div class="stags">
+        <span class="stag-item green">Spring Boot</span><span class="stag-item green">Gin</span><span class="stag-item green">Dropwizard</span><span class="stag-item green">Laravel</span>
+      </div>
+    </div>
+    <div class="scat">
+      <div class="scat-title amber">Data & Messaging</div>
+      <div class="stags">
+        <span class="stag-item amber">MySQL</span><span class="stag-item amber">Redis</span><span class="stag-item amber">Apache Kafka</span><span class="stag-item amber">GraphQL</span><span class="stag-item amber">gRPC</span>
+      </div>
+    </div>
+    <div class="scat">
+      <div class="scat-title purple">Cloud & Infra</div>
+      <div class="stags">
+        <span class="stag-item purple">AWS S3</span><span class="stag-item purple">Kubernetes</span><span class="stag-item purple">Docker</span><span class="stag-item purple">Jenkins</span><span class="stag-item purple">GoCD</span>
+      </div>
+    </div>
+    <div class="scat">
+      <div class="scat-title pink">Observability</div>
+      <div class="stags">
+        <span class="stag-item pink">Grafana</span><span class="stag-item pink">DataDog</span><span class="stag-item pink">Sentry</span><span class="stag-item pink">OpenTelemetry</span>
+      </div>
+    </div>
+    <div class="scat">
+      <div class="scat-title green">Architecture</div>
+      <div class="stags">
+        <span class="stag-item green">Microservices</span><span class="stag-item green">REST APIs</span><span class="stag-item green">LLD / HLD</span><span class="stag-item green">Schema Design</span><span class="stag-item green">Distributed Systems</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="wrap fade-up" style="padding-top:0;">
+  <span class="stag">Career</span>
+  <h2 class="stitle">Where I've made an impact.</h2>
+  <p class="ssub">Click any role to see the full impact story.</p>
+  <div class="timeline">
+
+    <div class="exp-item">
+      <div class="exp-dot p"></div>
+      <div class="ecard" onclick="toggleExp(this)">
+        <div class="ecard-head"><span class="ecard-role">Software Engineer 2</span><span class="eperiod">Jan 2025 – Present</span></div>
+        <div class="ecompany">Aspire · Bangalore</div>
+        <ul class="epoints">
+          <li>Designed multi-currency payout flows (DBS-HK / CC-HK) in Golang — reduced FX transfer failure rates by ~30%.</li>
+          <li>Architected CC HK Automated Reconciliation Pipeline — CAMT-style S3 ingestion with idempotent execution and exponential backoff.</li>
+          <li>Built Provisional Transaction Limit System (PFX1) with distributed locking and maker-checker controls — boosted new-business activation by 42%.</li>
+          <li>Delivered Huifu CNY payment rail from scratch — opening a new CNY cross-border corridor for Aspire HK clients.</li>
+          <li>Scaled HK migration workflow for 1,800+ clients from CC-SG to CC-HK — cut manual ops by 60%.</li>
+          <li>Integrated Sentry + OpenTelemetry for distributed tracing; resolved critical P1 bugs across FX fee misrouting and provider auth failures.</li>
+        </ul>
+        <div class="estack">
+          <span class="etag">Golang</span><span class="etag">Java</span><span class="etag">PHP/Laravel</span><span class="etag">Kafka</span><span class="etag">MySQL</span><span class="etag">AWS S3</span><span class="etag">OpenTelemetry</span><span class="etag">Grafana</span>
+        </div>
+        <div class="etoggle">Show details ▾</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot g"></div>
+      <div class="ecard" onclick="toggleExp(this)">
+        <div class="ecard-head"><span class="ecard-role">Software Engineer</span><span class="eperiod">May 2023 – Dec 2024</span></div>
+        <div class="ecompany">WebEngage · Bangalore</div>
+        <ul class="epoints">
+          <li>Built ConvertWise Backend APIs in Java/Spring — AI-based personalized campaigns that increased monthly sales by 25%.</li>
+          <li>Developed Wise Cart — AI-enabled cart boosting upsell and personalized reward banners — enhanced 15% AOV for Shopify merchants.</li>
+          <li>Re-architected Historical Data Sync (HDS) service using Dropwizard & AWS — reduced data-stuck problems by 50%.</li>
+          <li>Led Zid Integration Service — full DB schema design and code from scratch to power recommendations for Salla App merchants.</li>
+        </ul>
+        <div class="estack">
+          <span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">Dropwizard</span><span class="etag">MySQL</span><span class="etag">AWS S3</span><span class="etag">Docker</span><span class="etag">Kubernetes</span><span class="etag">GraphQL</span>
+        </div>
+        <div class="etoggle">Show details ▾</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot b"></div>
+      <div class="ecard" onclick="toggleExp(this)">
+        <div class="ecard-head"><span class="ecard-role">SDE Intern</span><span class="eperiod">Jun 2022 – Dec 2022</span></div>
+        <div class="ecompany">Groww · Bangalore</div>
+        <ul class="epoints">
+          <li>Built GrowwPay UPI service — send/receive money flows with collect request APIs in Java & Spring Boot.</li>
+          <li>Developed event publisher for push & in-app notifications via Kafka producers/consumers.</li>
+          <li>Built webhook manager service to receive and process payloads using gRPC and Apache Kafka.</li>
+        </ul>
+        <div class="estack">
+          <span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">MySQL</span><span class="etag">Redis</span><span class="etag">gRPC</span><span class="etag">Apache Kafka</span>
+        </div>
+        <div class="etoggle">Show details ▾</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div id="achievements" class="wrap fade-up" style="padding-top:0;">
+  <span class="stag">Highlights</span>
+  <h2 class="stitle">Wins beyond work.</h2>
+  <div class="ach-grid">
+    <div class="ach-card">
+      <div class="ach-icon" style="background:rgba(247,192,111,.12);">⭐</div>
+      <div><div class="ach-t">CodeChef 4★ · 1800+ Rating</div><div class="ach-s">Top competitive programmer on one of India's largest platforms.</div></div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon" style="background:rgba(55,138,221,.12);">🔷</div>
+      <div><div class="ach-t">Codeforces Specialist · 1400+</div><div class="ach-s">Strong algorithmic problem-solving demonstrated internationally.</div></div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon" style="background:rgba(94,221,184,.12);">🌍</div>
+      <div><div class="ach-t">Google KickStart · Global Rank 2120</div><div class="ach-s">Qualified Google CodeJam and ranked globally in KickStart.</div></div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon" style="background:rgba(124,111,247,.12);">🏆</div>
+      <div><div class="ach-t">ACM-ICPC · Rank 7</div><div class="ach-s">Rank 7 in ACM-ICPC Preliminary — one of the most prestigious CS competitions.</div></div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon" style="background:rgba(247,192,111,.12);">📚</div>
+      <div><div class="ach-t">1000+ Problems Solved</div><div class="ach-s">Solved 1000+ problems across GFG and Leetcode covering DSA, DP, Graphs.</div></div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon" style="background:rgba(55,138,221,.12);">🎓</div>
+      <div><div class="ach-t">Indian Institute of Information Technology Nagpur</div><div class="ach-s">B.Tech in Computer Science and Engineering, 2019–2023.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact-section" class="wrap fade-up" style="text-align:center;">
+  <span class="stag">Get In Touch</span>
+  <h2 class="stitle">Ready to work together?</h2>
+  <p class="ssub" style="margin:0 auto 0;">Whether it's a full-time role, an AI project, or a freelance sprint — I'd love to hear what you're building.</p>
+  <div class="contact-links">
+    <a href="mailto:aniketshrivastav02@gmail.com" class="clink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      aniketshrivastav02@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/aniketshrivastav" target="_blank" class="clink">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10V9h4v1.765A4 4 0 0 1 22 14v7h-4v-7a2 2 0 0 0-2-2z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="tel:+918275183571" class="clink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.9 2 2 0 0 1 3.58 2.72h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6z"/></svg>
+      +91 82751 83571
+    </a>
+  </div>
+  <div class="hire-box">
+    <div class="hire-t">Open to full-time & freelance roles</div>
+    <div class="hire-s">Looking for a senior backend or AI engineer who ships fast and builds things that scale? I'm available for roles and project-based work.</div>
+    <a href="mailto:aniketshrivastav02@gmail.com" class="btn-primary">Send me an email →</a>
+  </div>
+</div>
+
+<footer>Built by Aniket Shrivastav · aniketshrivastav02@gmail.com · Indian Institute of Information Technology Nagpur</footer>
+
+</div><!-- end main-page -->
+
+<!-- ============ FREELANCE PAGE ============ -->
+<div id="freelance-page" class="page">
+
+<div class="fl-hero">
+  <div class="fl-hero-inner">
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+      <div class="fl-avail">Available for Projects</div>
+      <a href="#" onclick="showMain();return false;" style="color:var(--muted);font-size:.82rem;text-decoration:none;">← Back to Portfolio</a>
+    </div>
+    <h1 class="fl-title">Let's build<br><span style="background:linear-gradient(90deg,var(--accent2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">something great.</span></h1>
+    <p class="fl-sub">I help startups and companies build fast, reliable backend systems — and I bring AI-powered thinking to every project. From payment infrastructure to LLM-integrated APIs.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="mailto:aniketshrivastav02@gmail.com" class="btn-primary">Start a Project</a>
+      <a href="https://www.linkedin.com/in/aniketshrivastav" target="_blank" class="btn-secondary">Connect on LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap fade-up">
+  <span class="stag">Services</span>
+  <h2 class="stitle">What I can build for you.</h2>
+  <div class="fl-services-grid">
+    <div class="fl-scard">
+      <div class="fl-scard-icon">🚀</div>
+      <div class="fl-scard-t">Backend API Development</div>
+      <div class="fl-scard-s">Production-ready REST or gRPC APIs built with Golang or Java. Fast, documented, tested, and scalable from day one.</div>
+      <div class="fl-scard-tags"><span class="fl-stag">Golang</span><span class="fl-stag">Java</span><span class="fl-stag">Spring Boot</span><span class="fl-stag">REST/gRPC</span></div>
+    </div>
+    <div class="fl-scard">
+      <div class="fl-scard-icon">🤖</div>
+      <div class="fl-scard-t">AI-Powered Product Features</div>
+      <div class="fl-scard-s">Integrate LLMs into your product — intelligent agents, RAG pipelines, smart APIs — using LangChain, Claude API, or OpenAI.</div>
+      <div class="fl-scard-tags"><span class="fl-stag">LangChain</span><span class="fl-stag">LLM APIs</span><span class="fl-stag">RAG</span><span class="fl-stag">AI Agents</span></div>
+    </div>
+    <div class="fl-scard">
+      <div class="fl-scard-icon">🏦</div>
+      <div class="fl-scard-t">Fintech & Payments</div>
+      <div class="fl-scard-s">Payment flows, UPI, multi-currency transfers, ledger design. Built for financial correctness and zero-failure reliability.</div>
+      <div class="fl-scard-tags"><span class="fl-stag">Payments</span><span class="fl-stag">UPI</span><span class="fl-stag">FX Transfers</span><span class="fl-stag">Ledger Design</span></div>
+    </div>
+    <div class="fl-scard">
+      <div class="fl-scard-icon">🏗️</div>
+      <div class="fl-scard-t">System Design & Architecture</div>
+      <div class="fl-scard-s">End-to-end HLD/LLD, schema design, microservice blueprints — I'll design the architecture and write the technical specs.</div>
+      <div class="fl-scard-tags"><span class="fl-stag">HLD/LLD</span><span class="fl-stag">Microservices</span><span class="fl-stag">Schema</span><span class="fl-stag">Kafka</span></div>
+    </div>
+    <div class="fl-scard">
+      <div class="fl-scard-icon">📊</div>
+      <div class="fl-scard-t">Data Pipelines & Kafka</div>
+      <div class="fl-scard-s">Event-driven systems, Kafka producers/consumers, retry logic, async processing — built for throughput and durability.</div>
+      <div class="fl-scard-tags"><span class="fl-stag">Apache Kafka</span><span class="fl-stag">Redis</span><span class="fl-stag">Event-Driven</span><span class="fl-stag">AWS</span></div>
+    </div>
+    <div class="fl-scard">
+      <div class="fl-scard-icon">🛠️</div>
+      <div class="fl-scard-t">Legacy System Refactoring</div>
+      <div class="fl-scard-s">Re-architect fragile or slow systems. I've reduced failure rates by 30–50% on production systems. I can do the same for yours.</div>
+      <div class="fl-scard-tags"><span class="fl-stag">Performance</span><span class="fl-stag">Reliability</span><span class="fl-stag">Migration</span><span class="fl-stag">Optimization</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap fade-up" style="padding-top:0;">
+  <span class="stag">How I Work</span>
+  <h2 class="stitle">Simple, transparent process.</h2>
+  <div class="process-steps">
+    <div class="pstep"><div class="pstep-num">1</div><div class="pstep-t">Discovery Call</div><div class="pstep-s">We discuss your problem, goals, timeline, and what success looks like.</div></div>
+    <div class="pstep"><div class="pstep-num">2</div><div class="pstep-t">Proposal & Design</div><div class="pstep-s">I deliver a technical design doc, timeline, and clear scope before any code is written.</div></div>
+    <div class="pstep"><div class="pstep-num">3</div><div class="pstep-t">Build & Iterate</div><div class="pstep-s">I ship in short cycles with regular updates. You always know what's happening.</div></div>
+    <div class="pstep"><div class="pstep-num">4</div><div class="pstep-t">Deliver & Support</div><div class="pstep-s">Clean handover with docs, tests, and post-delivery support.</div></div>
+  </div>
+</div>
+
+<div class="wrap fade-up" style="padding-top:0;">
+  <span class="stag">Engagement Types</span>
+  <h2 class="stitle">Pick what works for you.</h2>
+  <div class="rates-grid">
+    <div class="rcard">
+      <div class="rcard-label">QUICK WIN</div>
+      <div class="rcard-title">Fixed-Scope Project</div>
+      <div class="rcard-sub">A clearly defined deliverable — API, service, integration, or technical design doc. Best for one-time needs.</div>
+      <a href="mailto:aniketshrivastav02@gmail.com?subject=Fixed Project Inquiry" class="rcard-cta">Get a Quote</a>
+    </div>
+    <div class="rcard featured">
+      <div class="rcard-label" style="color:var(--accent);">MOST POPULAR</div>
+      <div class="rcard-title">Part-Time Retainer</div>
+      <div class="rcard-sub">Ongoing engineering support on a weekly basis. Perfect for startups that need a senior dev without a full-time hire.</div>
+      <a href="mailto:aniketshrivastav02@gmail.com?subject=Retainer Inquiry" class="rcard-cta">Let's Talk</a>
+    </div>
+    <div class="rcard">
+      <div class="rcard-label">ADVISORY</div>
+      <div class="rcard-title">Technical Consulting</div>
+      <div class="rcard-sub">Architecture review, system design guidance, code review, or AI integration strategy for your team.</div>
+      <a href="mailto:aniketshrivastav02@gmail.com?subject=Consulting Inquiry" class="rcard-cta">Book a Session</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap fade-up" style="padding-top:0;text-align:center;">
+  <div class="hire-box">
+    <div class="hire-t">Ready to start?</div>
+    <div class="hire-s">Drop me an email with what you're building and I'll get back to you within 24 hours.</div>
+    <a href="mailto:aniketshrivastav02@gmail.com" class="btn-primary">aniketshrivastav02@gmail.com →</a>
+  </div>
+</div>
+
+<footer>Aniket Shrivastav · Freelance Backend & AI Engineer · Indian Institute of Information Technology Nagpur</footer>
+
+</div><!-- end freelance-page -->
+
+<script>
+function showMain(anchor){
+  document.getElementById('main-page').classList.add('active');
+  document.getElementById('freelance-page').classList.remove('active');
+  window.scrollTo(0,0);
+  if(anchor){setTimeout(()=>{const el=document.getElementById(anchor);if(el)el.scrollIntoView({behavior:'smooth'});},100);}
+  observeFadeUps();
+}
+function showFreelance(){
+  document.getElementById('main-page').classList.remove('active');
+  document.getElementById('freelance-page').classList.add('active');
+  window.scrollTo(0,0);
+  observeFadeUps();
+}
+function toggleExp(card){
+  const pts=card.querySelector('.epoints');
+  const tog=card.querySelector('.etoggle');
+  const open=pts.classList.toggle('open');
+  tog.textContent=open?'Hide details ▴':'Show details ▾';
+}
+function observeFadeUps(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-up').forEach(el=>{el.classList.remove('visible');obs.observe(el);});
+}
+observeFadeUps();
+</script>
+</body>
+</html>
