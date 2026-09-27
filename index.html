@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Aniket Shrivastav — Software Engineer & AI Engineer</title>
+<meta name="description" content="Aniket Shrivastav: Software Engineer 2 at Aspire (cross-border payments & FX) and founder of Nideknil, an AI hiring platform."/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -115,10 +116,38 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(7,7,15,0.9);
 .epoints{list-style:none;display:none;}
 .epoints.open{display:block;}
 .epoints li{color:var(--muted);font-size:.85rem;line-height:1.75;padding:.28rem 0 .28rem 1rem;position:relative;}
+.epoints li strong{color:var(--text);font-weight:700;}
+.epoints li code{font-family:ui-monospace,Menlo,monospace;font-size:.78rem;background:var(--bg3);padding:.05rem .35rem;border-radius:4px;color:var(--accent2);}
 .epoints li::before{content:'▸';position:absolute;left:0;color:var(--accent);}
 .estack{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem;}
 .etag{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:.18rem .6rem;border-radius:6px;font-size:.7rem;}
 .etoggle{font-size:.75rem;color:var(--accent);cursor:pointer;margin-top:.7rem;display:inline-flex;align-items:center;gap:.3rem;user-select:none;}
+
+/* NIDEKNIL */
+.nk-card{background:linear-gradient(135deg,rgba(76,178,255,.10),rgba(124,111,247,.06));border:1px solid rgba(76,178,255,.28);border-radius:18px;padding:2.2rem;margin-top:3rem;}
+.nk-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.2rem;}
+.nk-brand{display:flex;align-items:center;gap:.8rem;}
+.nk-logo{width:44px;height:44px;border-radius:11px;background:#4CB2FF;display:flex;align-items:center;justify-content:center;}
+.nk-logo svg{width:24px;height:24px;}
+.nk-name{font-size:1.5rem;font-weight:900;letter-spacing:-.5px;}
+.nk-name span{color:#4CB2FF;}
+.nk-role{font-size:.8rem;color:var(--muted);margin-top:.1rem;}
+.nk-links{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;}
+.nk-visit{background:#4CB2FF;color:#07070f;padding:.5rem 1.2rem;border-radius:8px;font-size:.82rem;font-weight:800;text-decoration:none;transition:transform .2s,opacity .2s;}
+.nk-visit:hover{transform:translateY(-2px);opacity:.9;}
+.nk-pitch{color:var(--muted);font-size:.93rem;line-height:1.8;max-width:760px;margin-bottom:1.6rem;}
+.nk-pitch strong{color:var(--text);}
+.nk-funnel{display:flex;align-items:stretch;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+.nk-step{flex:1;min-width:140px;background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:.8rem .9rem;}
+.nk-step.final{border-color:rgba(76,178,255,.5);background:rgba(76,178,255,.10);}
+.nk-step-n{font-family:ui-monospace,Menlo,monospace;font-size:.7rem;color:#4CB2FF;margin-bottom:.25rem;}
+.nk-step-t{font-size:.8rem;font-weight:700;line-height:1.35;}
+.nk-arrow{display:flex;align-items:center;color:#4CB2FF;font-weight:700;}
+.nk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-bottom:1.6rem;}
+.nk-feat{background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:1.2rem;transition:all .22s;}
+.nk-feat:hover{border-color:rgba(76,178,255,.5);transform:translateY(-3px);}
+.nk-feat-t{font-size:.88rem;font-weight:800;margin-bottom:.35rem;}
+.nk-feat-s{font-size:.78rem;color:var(--muted);line-height:1.6;}
 
 /* ACHIEVEMENTS */
 .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:3rem;}
@@ -186,6 +215,8 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
   .hero-stats{grid-template-columns:repeat(2,1fr);}
   .nav-links{display:none;}
   .hero-btns{flex-direction:column;align-items:flex-start;}
+  .nk-card{padding:1.4rem;}
+  .nk-arrow{display:none;}
 }
 </style>
 </head>
@@ -198,6 +229,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
       <li><a href="#about" onclick="showMain()">About</a></li>
       <li><a href="#skills" onclick="showMain()">Skills</a></li>
       <li><a href="#experience" onclick="showMain()">Experience</a></li>
+      <li><a href="#nideknil" onclick="showMain()">Nideknil</a></li>
       <li><a href="#achievements" onclick="showMain()">Achievements</a></li>
       <li><a href="#" onclick="showFreelance();return false;" style="color:var(--accent2);font-weight:600;">Freelance</a></li>
       <li><a href="#contact-section" onclick="showMain()">Contact</a></li>
@@ -216,12 +248,12 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
   <div class="hero-inner">
     <div class="hero-badges">
       <span class="hbadge purple">⚡ Software Engineer 2</span>
-      <span class="hbadge green">🤖 Aspiring AI Engineer</span>
+      <span class="hbadge green">🚀 Founder · Nideknil</span>
       <span class="hbadge amber">🎯 Open to Opportunities</span>
     </div>
     <h1 class="hero-name">Aniket<br>Shrivastav</h1>
     <p class="hero-role">Backend Systems · Distributed Architecture · AI-Powered Engineering</p>
-    <p class="hero-desc">I build <span>high-performance backend systems</span> that power fintech products — and I'm actively expanding into <span>AI engineering</span>, using LLMs, LangChain, and AI-first tools to solve real-world problems at scale.</p>
+    <p class="hero-desc">By day I build <span>cross-border payments &amp; FX infrastructure</span> at Aspire. On the side I'm building <span>Nideknil</span>, an AI hiring platform that ranks every candidate for a role using vector retrieval, reranking and LLM evaluation.</p>
     <div class="hero-btns">
       <a href="#experience" class="btn-primary" onclick="showMain()">View My Work</a>
       <a href="#" class="btn-freelance" onclick="showFreelance();return false;">🚀 Freelance With Me</a>
@@ -242,9 +274,9 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
   <h2 class="stitle">Engineer. Problem Solver.<br>AI Enthusiast.</h2>
   <div class="about-grid">
     <div>
-      <p class="about-p">I'm a Software Engineer with deep expertise in <strong>distributed systems, microservices, and fintech backend architecture</strong>. Currently at <strong>Aspire</strong>, building multi-currency payment infrastructure. Previously at <strong>WebEngage</strong> and <strong>Groww</strong>.</p>
+      <p class="about-p">I'm a Software Engineer with deep expertise in <strong>distributed systems, microservices, and fintech backend architecture</strong>. Currently at <strong>Aspire</strong>, building cross-border payments and FX infrastructure across SG, HK, AU, US and SEA. Previously at <strong>WebEngage</strong> and <strong>Groww</strong>.</p>
       <p class="about-p">I graduated from <strong>Indian Institute of Information Technology Nagpur</strong> in Computer Science, and am passionate about competitive programming — 4★ on CodeChef.</p>
-      <p class="about-p">Beyond backend, I'm deeply invested in the <strong>AI engineering space</strong> — building with LLMs, integrating AI into product workflows, and staying on the cutting edge of what's possible with tools like Claude, Cursor, and LangChain.</p>
+      <p class="about-p">Outside work I'm building <strong>Nideknil</strong> ("LinkedIn" spelled backwards), an AI hiring platform I designed and shipped end to end. It covers a candidate-ranking funnel, a merit-ranked referral marketplace, and AI-fluency scoring that uses Claude Code and MCP.</p>
       <div class="ai-highlight">
         <div class="ai-highlight-title">AI TOOLS I USE DAILY</div>
         <div class="ai-tools">
@@ -290,16 +322,18 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
   <div class="ai-banner">
     <div class="ai-banner-text">
       <div class="ai-banner-title">🤖 AI & Machine Learning Skills</div>
-      <div class="ai-banner-sub">Actively building AI-powered applications — from LLM orchestration to intelligent backend APIs. Exploring the intersection of robust software engineering and AI.</div>
+      <div class="ai-banner-sub">Used in production at Nideknil: semantic retrieval, reranking, LLM-as-judge scoring, MCP servers and agents, all shipped end to end.</div>
     </div>
     <div class="ai-banner-tags">
       <span class="stag-item green">LLM Integration</span>
-      <span class="stag-item green">LangChain</span>
-      <span class="stag-item green">Prompt Engineering</span>
-      <span class="stag-item green">RAG Pipelines</span>
+      <span class="stag-item green">Semantic Search</span>
+      <span class="stag-item green">pgvector / HNSW</span>
+      <span class="stag-item green">Cohere Rerank</span>
+      <span class="stag-item green">LLM-as-Judge Evals</span>
+      <span class="stag-item green">MCP Servers</span>
       <span class="stag-item green">OpenAI API</span>
       <span class="stag-item green">Claude API</span>
-      <span class="stag-item green">Vector DBs</span>
+      <span class="stag-item green">Prompt Engineering</span>
       <span class="stag-item green">AI Agents</span>
     </div>
   </div>
@@ -314,19 +348,19 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
     <div class="scat">
       <div class="scat-title green">Backend Frameworks</div>
       <div class="stags">
-        <span class="stag-item green">Spring Boot</span><span class="stag-item green">Gin</span><span class="stag-item green">Dropwizard</span><span class="stag-item green">Laravel</span>
+        <span class="stag-item green">Spring Boot</span><span class="stag-item green">Gin</span><span class="stag-item green">Dropwizard</span><span class="stag-item green">Laravel</span><span class="stag-item green">FastAPI</span><span class="stag-item green">Celery</span><span class="stag-item green">React + TS</span>
       </div>
     </div>
     <div class="scat">
       <div class="scat-title amber">Data & Messaging</div>
       <div class="stags">
-        <span class="stag-item amber">MySQL</span><span class="stag-item amber">Redis</span><span class="stag-item amber">Apache Kafka</span><span class="stag-item amber">GraphQL</span><span class="stag-item amber">gRPC</span>
+        <span class="stag-item amber">MySQL</span><span class="stag-item amber">PostgreSQL</span><span class="stag-item amber">Redis</span><span class="stag-item amber">Apache Kafka</span><span class="stag-item amber">GraphQL</span><span class="stag-item amber">gRPC</span>
       </div>
     </div>
     <div class="scat">
       <div class="scat-title purple">Cloud & Infra</div>
       <div class="stags">
-        <span class="stag-item purple">AWS S3</span><span class="stag-item purple">Kubernetes</span><span class="stag-item purple">Docker</span><span class="stag-item purple">Jenkins</span><span class="stag-item purple">GoCD</span>
+        <span class="stag-item purple">AWS S3 / SQS / EC2</span><span class="stag-item purple">Vercel</span><span class="stag-item purple">Kubernetes</span><span class="stag-item purple">Docker</span><span class="stag-item purple">Jenkins</span><span class="stag-item purple">GoCD</span>
       </div>
     </div>
     <div class="scat">
@@ -357,15 +391,16 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
         <div class="ecard-head"><span class="ecard-role">Software Engineer 2</span><span class="eperiod">Jan 2025 – Present</span></div>
         <div class="ecompany">Aspire · Bangalore</div>
         <ul class="epoints">
-          <li>Designed multi-currency payout flows (DBS-HK / CC-HK) in Golang — reduced FX transfer failure rates by ~30%.</li>
-          <li>Architected CC HK Automated Reconciliation Pipeline — CAMT-style S3 ingestion with idempotent execution and exponential backoff.</li>
-          <li>Built Provisional Transaction Limit System (PFX1) with distributed locking and maker-checker controls — boosted new-business activation by 42%.</li>
-          <li>Delivered Huifu CNY payment rail from scratch — opening a new CNY cross-border corridor for Aspire HK clients.</li>
-          <li>Scaled HK migration workflow for 1,800+ clients from CC-SG to CC-HK — cut manual ops by 60%.</li>
-          <li>Integrated Sentry + OpenTelemetry for distributed tracing; resolved critical P1 bugs across FX fee misrouting and provider auth failures.</li>
+          <li><strong>Wallex SEA multi-region launch:</strong> built IDR/PHP/MYR/VND collections, FX conversion and local payouts end to end for HK, AU and US clients in Java and Golang. Includes per-region credential isolation, idempotent Kafka webhook processing and automatic rollback of failed legs. Launched in 3 new regions with FX into 13 currencies.</li>
+          <li><strong>HK migration engine:</strong> a resumable, step-tracked Java workflow that moved 1,800+ clients from CC-SG to CC-HK. It automates balance transfers, account creation, recipient migration and ledger sync, with safe re-runs and retries that respect rate limits. Cut manual ops by 60%.</li>
+          <li><strong>Concurrency-safe transaction limits:</strong> configurable outbound limits for POB-unverified businesses across every transfer flow (single, bulk, scheduled, bill and claim). Distributed locking prevents concurrent overspend, with maker-checker controls and rollback on failure. Boosted new-business activation by 42%.</li>
+          <li><strong>Multi-rail payout service:</strong> DBS-SG ACT, DBS-HK TT and CC-HK transfer flows in Golang with provider-level error handling and retries. Reduced cross-border FX transfer failures by ~30%.</li>
+          <li><strong>Huifu CNY payment rail:</strong> a new cross-border CNY corridor built end to end, covering recipient creation, transfer dispatch, fee calculation and Unified Social Credit Code validation. Opened China payouts for HK clients.</li>
+          <li><strong>Recipient platform at scale:</strong> rebuilt recipient create/update/delete/migrate flows with a zero-downtime MySQL migration, query optimization and caching on <code>GET /v1/counterparties</code>. Added fallback provider routing for when Payout Hub is disabled. Cut p95 latency by ~70% and scaled to 30,000+ businesses.</li>
+          <li><strong>Observability &amp; reliability:</strong> integrated Sentry, OpenTelemetry and Datadog across Aspire Hub, and built AWS S3 statement ingestion with exponential-backoff retries and Slack alerts. Cut incident MTTR by ~50%.</li>
         </ul>
         <div class="estack">
-          <span class="etag">Golang</span><span class="etag">Java</span><span class="etag">PHP/Laravel</span><span class="etag">Kafka</span><span class="etag">MySQL</span><span class="etag">AWS S3</span><span class="etag">OpenTelemetry</span><span class="etag">Grafana</span>
+          <span class="etag">Golang</span><span class="etag">Java</span><span class="etag">PHP/Laravel</span><span class="etag">Kafka</span><span class="etag">MySQL</span><span class="etag">Redis</span><span class="etag">AWS S3 / SQS</span><span class="etag">Datadog</span><span class="etag">Sentry</span><span class="etag">OpenTelemetry</span>
         </div>
         <div class="etoggle">Show details ▾</div>
       </div>
@@ -380,7 +415,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
           <li>Built ConvertWise Backend APIs in Java/Spring — AI-based personalized campaigns that increased monthly sales by 25%.</li>
           <li>Developed Wise Cart — AI-enabled cart boosting upsell and personalized reward banners — enhanced 15% AOV for Shopify merchants.</li>
           <li>Re-architected Historical Data Sync (HDS) service using Dropwizard & AWS — reduced data-stuck problems by 50%.</li>
-          <li>Led Zid Integration Service — full DB schema design and code from scratch to power recommendations for Salla App merchants.</li>
+          <li>Led Zid Integration Service — full DB schema design and code from scratch to power recommendations for Zid App merchants.</li>
         </ul>
         <div class="estack">
           <span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">Dropwizard</span><span class="etag">MySQL</span><span class="etag">AWS S3</span><span class="etag">Docker</span><span class="etag">Kubernetes</span><span class="etag">GraphQL</span>
@@ -406,6 +441,75 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem 5%;colo
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- NIDEKNIL -->
+<div id="nideknil" class="wrap fade-up" style="padding-top:0;">
+  <span class="stag">What I'm Building</span>
+  <h2 class="stitle">Nideknil: LinkedIn, flipped.</h2>
+  <p class="ssub">An AI hiring platform I designed, built and shipped solo. Recruiters don't hunt through profiles; AI ranks the whole candidate base for any role.</p>
+
+  <div class="nk-card">
+    <div class="nk-head">
+      <div class="nk-brand">
+        <div class="nk-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13l-3.5-3.5"/><path d="M20 15H7l3.5 3.5"/></svg>
+        </div>
+        <div>
+          <div class="nk-name"><span>Ni</span>deknil</div>
+          <div class="nk-role">Founder &amp; Engineer · Jun 2026 – Present</div>
+        </div>
+      </div>
+      <div class="nk-links">
+        <a href="https://www.nideknil.in/" target="_blank" rel="noopener" class="nk-visit">Visit nideknil.in ↗</a>
+      </div>
+    </div>
+
+    <p class="nk-pitch">Screening every applicant with an LLM is slow and expensive, so Nideknil treats the <strong>LLM as the scarce resource</strong>. Cheap stages cut the pool down first, and only the top handful of candidates reach deep AI evaluation. Every score comes back <strong>explainable, factor by factor</strong>.</p>
+
+    <div class="nk-funnel">
+      <div class="nk-step"><div class="nk-step-n">01 · INPUT</div><div class="nk-step-t">Job description, embedded</div></div>
+      <div class="nk-arrow">→</div>
+      <div class="nk-step"><div class="nk-step-n">02 · TOP 500</div><div class="nk-step-t">pgvector HNSW semantic retrieval</div></div>
+      <div class="nk-arrow">→</div>
+      <div class="nk-step"><div class="nk-step-n">03 · TOP 50</div><div class="nk-step-t">Cohere cross-encoder rerank</div></div>
+      <div class="nk-arrow">→</div>
+      <div class="nk-step"><div class="nk-step-n">04 · TOP 10</div><div class="nk-step-t">LLM deep evaluation</div></div>
+      <div class="nk-arrow">→</div>
+      <div class="nk-step final"><div class="nk-step-n">05 · OUTPUT</div><div class="nk-step-t">Blended, explainable score</div></div>
+    </div>
+
+    <div class="nk-grid">
+      <div class="nk-feat">
+        <div class="nk-feat-t">🎯 Candidate Ranking Funnel</div>
+        <div class="nk-feat-s">Resumes are parsed and embedded at upload time, so a "rank now" request scales with top-k, not corpus size. Runs async on Celery + Redis, with SHA-256 resume dedup and a Redis cache for LLM responses.</div>
+      </div>
+      <div class="nk-feat">
+        <div class="nk-feat-t">🤝 Merit-Ranked Referrals</div>
+        <div class="nk-feat-s">Verified employees open referral posts. Applicants are AI-ranked into a live top pool plus a waitlist, and referrals happen within a time-boxed window. No cold DMs, no popularity contest.</div>
+      </div>
+      <div class="nk-feat">
+        <div class="nk-feat-t">⚡ AI-Fluency Scoring</div>
+        <div class="nk-feat-s">Take-home assignments are delivered through Claude Code MCP servers. Candidates submit session transcripts with a CLI that redacts secrets locally, and a Claude judge scores them on a weighted 8-category rubric.</div>
+      </div>
+      <div class="nk-feat">
+        <div class="nk-feat-t">📈 Nideknil Pulse</div>
+        <div class="nk-feat-s">A B2B product that measures a whole engineering team's AI fluency, built on the same transcript-scoring engine.</div>
+      </div>
+      <div class="nk-feat">
+        <div class="nk-feat-t">🏊 Pools, Displacement &amp; Reserve</div>
+        <div class="nk-feat-s">Each job has a limited acceptance pool. Stronger applicants displace weaker ones, displaced candidates move to a reserve pool, and every status change triggers an email.</div>
+      </div>
+      <div class="nk-feat">
+        <div class="nk-feat-t">✉️ Outreach Agents</div>
+        <div class="nk-feat-s">LLM agents that turn a hiring post into a personalized pitch or a full cold-email application, with multi-provider fallback (OpenAI, Groq, Gemini).</div>
+      </div>
+    </div>
+
+    <div class="estack">
+      <span class="etag">Python</span><span class="etag">FastAPI</span><span class="etag">PostgreSQL + pgvector</span><span class="etag">Celery</span><span class="etag">Redis</span><span class="etag">OpenAI GPT-5</span><span class="etag">Claude</span><span class="etag">Cohere Rerank</span><span class="etag">MCP</span><span class="etag">AWS S3 / EC2</span><span class="etag">Docker</span><span class="etag">React + TypeScript</span><span class="etag">Vercel</span><span class="etag">Razorpay</span><span class="etag">LinkedIn / Google OAuth</span>
+    </div>
   </div>
 </div>
 
